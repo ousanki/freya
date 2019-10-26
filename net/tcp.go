@@ -2,16 +2,16 @@ package net
 
 import (
 	"errors"
-	"time"
 	"fmt"
-	"freya/decoder"
-	"freya/encoder"
-	"freya/global"
-	"freya/handler"
-	"freya/log"
+	"github.com/ousanki/freya/decoder"
+	"github.com/ousanki/freya/encoder"
+	"github.com/ousanki/freya/global"
+	"github.com/ousanki/freya/handler"
+	"github.com/ousanki/freya/log"
 	"io"
 	"net"
 	"sync"
+	"time"
 )
 
 type UGwMap struct {

@@ -1,9 +1,9 @@
 package cache_locker
 
 import (
-	"freya/global"
-	"freya/log"
 	"github.com/garyburd/redigo/redis"
+	"github.com/ousanki/freya/global"
+	"github.com/ousanki/freya/log"
 )
 
 type CacheLocker struct {

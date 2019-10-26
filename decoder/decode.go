@@ -5,10 +5,10 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/ousanki/freya/common"
+	"github.com/ousanki/freya/handler"
 	"io"
 	"reflect"
-	"freya/common"
-	"freya/handler"
 )
 
 type Decoder struct {

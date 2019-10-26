@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"freya/common"
 	"github.com/kataras/iris/context"
+	"github.com/ousanki/freya/common"
 )
 
 type TcpHandler struct {

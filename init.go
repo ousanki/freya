@@ -1,14 +1,14 @@
 package freya
 
 import (
-	"freya/backend"
-	"freya/decoder"
-	"freya/global"
-	"freya/handler"
-	"freya/log"
-	"freya/net"
-	"freya/utils"
 	"github.com/kataras/iris"
+	"github.com/ousanki/freya/backend"
+	"github.com/ousanki/freya/decoder"
+	"github.com/ousanki/freya/global"
+	"github.com/ousanki/freya/handler"
+	"github.com/ousanki/freya/log"
+	"github.com/ousanki/freya/net"
+	"github.com/ousanki/freya/utils"
 )
 
 func NewApp() {

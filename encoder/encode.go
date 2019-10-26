@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/binary"
 	"encoding/json"
-	"freya/common"
+	"github.com/ousanki/freya/common"
 )
 
 func Encode(msgId uint16, proxyId uint64, clientId uint32, data interface{}) ([]byte, error) {

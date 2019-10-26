@@ -2,7 +2,7 @@ package utils
 
 import (
 	"errors"
-	"freya/global"
+	"github.com/ousanki/freya/global"
 	"sync"
 	"time"
 )

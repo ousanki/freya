@@ -2,7 +2,7 @@ package global
 
 import (
 	"fmt"
-	"freya/log"
+	"github.com/ousanki/freya/log"
 	"time"
 
 	"github.com/hashicorp/consul/api"
