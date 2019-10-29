@@ -52,6 +52,8 @@ type Global struct {
 	consul      *api.Client
 	clients     map[string]*RpcClient
 	rds         map[string]*redis.Pool
+	sqlGroups   map[string]*Group
+	sqlMu       sync.RWMutex
 	nsqConsumer map[string]*NsqConsumer
 	nsqProducer map[string]*NsqProducer
 }
@@ -77,6 +79,17 @@ func (g *Global) initRedis(name, addr, pwd string) {
 		},
 	}
 	g.rds[name] = db
+}
+
+func (g *Global) initDatabase(name, master string, slaves []string) {
+	group, err := newGroup(name, master, slaves)
+	if err != nil {
+		panic(err.Error())
+	}
+	g.sqlMu.Lock()
+	defer g.sqlMu.Unlock()
+
+	g.sqlGroups[name] = group
 }
 
 func (g *Global) initNsqConsumer(name, topic, channel, addr string) {
@@ -143,6 +156,16 @@ func GetRedis(name string) redis.Conn {
 func GetClient(name string) *RpcClient {
 	if c, has := G.clients[name]; has {
 		return c
+	}
+	return nil
+}
+
+func GetSQLGroup(name string) *Group {
+	G.sqlMu.RLock()
+	defer G.sqlMu.RUnlock()
+
+	if g, has := G.sqlGroups[name]; has {
+		return g
 	}
 	return nil
 }

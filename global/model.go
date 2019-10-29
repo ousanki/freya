@@ -43,6 +43,12 @@ type ClientConfig struct {
 	ReadTimeout int      `toml:"read_timeout"`
 }
 
+type SqlGroupConfig struct {
+	Name     string   `toml:"name"`
+	Master   string   `toml:"master"`
+	Slaves   []string `toml:"slaves"`
+}
+
 type Config struct {
 	Server      ServerConfig        `toml:"server"`
 	Consul      *ConsulConfig       `toml:"consul"`
@@ -50,6 +56,7 @@ type Config struct {
 	Clients     []ClientConfig      `toml:"client"`
 	NsqConsumer []NsqConsumerConfig `toml:"nsq_consumer"`
 	NsqProducer []NsqProducerConfig `toml:"nsq_producer"`
+	SqlGroups   []SqlGroupConfig    `toml:"database"`
 }
 
 type FreyaNsqHandler struct {

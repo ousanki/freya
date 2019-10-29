@@ -26,6 +26,7 @@ func newGlobal(c *Config) *Global {
 		clients:     make(map[string]*RpcClient),
 		nsqConsumer: make(map[string]*NsqConsumer),
 		nsqProducer: make(map[string]*NsqProducer),
+		sqlGroups:   make(map[string]*Group),
 	}
 	for _, r := range c.Redis {
 		g.initRedis(r.Name, r.Addr, r.Pwd)
@@ -42,6 +43,9 @@ func newGlobal(c *Config) *Global {
 	}
 	for _, c := range c.Clients {
 		g.initClient(c.Name, c.Consul, c.EndPoints, c.ReadTimeout)
+	}
+	for _, group := range c.SqlGroups {
+		g.initDatabase(group.Name, group.Master, group.Slaves)
 	}
 
 	return &g
