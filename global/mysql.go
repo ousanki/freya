@@ -5,6 +5,7 @@ import (
 	"github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"strconv"
+	"sync/atomic"
 	"time"
 )
 
@@ -19,6 +20,18 @@ type Group struct {
 	replica []*Client
 	next    uint64
 	total   uint64
+}
+
+func (g *Group) Master() *Client {
+	return g.master
+}
+
+func (g *Group) Slave() *Client {
+	if g.total == 0 {
+		return g.master
+	}
+	next := atomic.AddUint64(&g.next, 1)
+	return g.replica[next%g.total]
 }
 
 func parseConnAddress(address string) (string, int, int, int, error) {
