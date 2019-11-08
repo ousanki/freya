@@ -27,7 +27,7 @@ func registerConsul(c *Config, client *api.Client) {
 		Name: c.Consul.Name,
 		Port: c.Server.HttpPort,
 		Tags: []string{
-			fmt.Sprintf("Game:%d", c.Server.ServerId/100),
+			fmt.Sprintf("Game:%d", (c.Server.ServerId - 100)/100 + 1),
 			fmt.Sprintf("Server:%d", c.Server.ServerId),
 		},
 		Address: c.Consul.Addr,
