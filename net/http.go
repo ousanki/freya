@@ -118,7 +118,12 @@ func GetHttp(service, api string, values url.Values) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	uri := fmt.Sprintf("http://%s%s?%s", endpoint, api, values.Encode())
+	var uri string
+	if values != nil {
+		uri = fmt.Sprintf("http://%s%s?%s", endpoint, api, values.Encode())
+	} else {
+		uri = fmt.Sprintf("http://%s%s", endpoint, api)
+	}
 	rsp, err := http.Get(uri)
 	if err != nil {
 		return nil, err
