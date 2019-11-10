@@ -143,7 +143,7 @@ func (g *Global) initClient(name string, use bool, eps string, rto int) {
 	}
 	g.clients[name] = client
 
-	go updateClient(name)
+	go updateClient(name, g)
 }
 
 func GetRedis(name string) redis.Conn {

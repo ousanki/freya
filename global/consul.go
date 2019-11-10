@@ -44,11 +44,11 @@ func registerConsul(c *Config, client *api.Client) {
 	}
 }
 
-func updateClient(name string) {
-	if G.consul == nil {
+func updateClient(name string, g *Global) {
+	if g.consul == nil {
 		return
 	}
-	client, ext := G.clients[name]
+	client, ext := g.clients[name]
 	if !ext {
 		return
 	}
