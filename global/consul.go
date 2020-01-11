@@ -11,7 +11,7 @@ import (
 func newConsul(c *Config) *api.Client {
 	config := api.DefaultConfig()
 	// 设置consul地址
-	config.Address = c.Consul.Addr
+	config.Address = c.Server.Addr
 	// 创建client
 	client, err := api.NewClient(config)
 	if err != nil {
