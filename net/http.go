@@ -148,7 +148,7 @@ func getEndPoint(service string) (string, error) {
 		endpoint = c.Eps[ran]
 	} else {
 		// use consul eps
-		c.Mu.RUnlock()
+		c.Mu.RLock()
 		ran := rand.Intn(len(c.ConsulEps))
 		endpoint = c.ConsulEps[ran]
 		c.Mu.RUnlock()
