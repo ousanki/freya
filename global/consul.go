@@ -56,7 +56,7 @@ func updateClient(name string, g *Global) {
 		return
 	}
 	for {
-		services, metainfo, err := G.consul.Health().Service(name, "", true,
+		services, metainfo, err := g.consul.Health().Service(name, "", true,
 			&api.QueryOptions{
 				WaitIndex: client.LastIndex,
 				WaitTime:  time.Second * 30,
