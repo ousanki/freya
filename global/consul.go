@@ -11,7 +11,7 @@ import (
 func newConsul(c *Config) *api.Client {
 	config := api.DefaultConfig()
 	// 设置consul地址
-	config.Address = c.Server.Addr
+	config.Address = c.Consul.Addr
 	// 创建client
 	client, err := api.NewClient(config)
 	if err != nil {
@@ -30,7 +30,7 @@ func registerConsul(c *Config, client *api.Client) {
 			fmt.Sprintf("Game:%d", (c.Server.ServerId - 100)/100 + 1),
 			fmt.Sprintf("Server:%d", c.Server.ServerId),
 		},
-		Address: c.Consul.Addr,
+		Address: c.Server.Addr,
 		Check: &api.AgentServiceCheck{
 			HTTP:                           fmt.Sprintf("http://%s:%d%s", c.Server.Addr, c.Server.HttpPort, "/check"),
 			Timeout:                        c.Consul.TimeOut,
