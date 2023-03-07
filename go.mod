@@ -30,7 +30,7 @@ require (
 	github.com/kataras/iris v11.1.1+incompatible
 	github.com/klauspost/compress v1.9.0 // indirect
 	github.com/mailru/easyjson v0.7.0 // indirect
-	github.com/microcosm-cc/bluemonday v1.0.2 // indirect
+	github.com/microcosm-cc/bluemonday v1.0.20 // indirect
 	github.com/moul/http2curl v1.0.0 // indirect
 	github.com/nsqio/go-nsq v1.0.7
 	github.com/onsi/ginkgo v1.10.2 // indirect
